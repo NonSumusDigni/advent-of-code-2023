@@ -1,4 +1,4 @@
-- [ ] Day 1
+- [X] Day 1
   - [ ] Part 1
   - [ ] Part 2
 - [ ] Day 2
