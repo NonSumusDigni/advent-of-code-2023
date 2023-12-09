@@ -1,6 +1,6 @@
-- [ ] Day 1
+- [X] Day 1
   - [X] Part 1
-  - [ ] Part 2
+  - [X] Part 2
 - [ ] Day 2
   - [ ] Part 1
   - [ ] Part 2
