@@ -1,4 +1,4 @@
-use crate::game::{Game, GameAnalysis};
+use crate::game::GameAnalysis;
 use std::collections::{BTreeMap, HashSet};
 
 #[derive(Debug, Default)]
@@ -28,11 +28,10 @@ pub struct IndexedGames {
 }
 
 impl IndexedGames {
-    pub(crate) fn insert(&mut self, game: Game) {
-        let analysis = game.analyze();
-        self.red.insert(analysis.max_red, game.id);
-        self.green.insert(analysis.max_green, game.id);
-        self.blue.insert(analysis.max_blue, game.id);
+    pub(crate) fn insert(&mut self, id: u64, analysis: GameAnalysis) {
+        self.red.insert(analysis.max_red, id);
+        self.green.insert(analysis.max_green, id);
+        self.blue.insert(analysis.max_blue, id);
     }
 
     pub(crate) fn query(&self, query: GameAnalysis) -> Vec<u64> {

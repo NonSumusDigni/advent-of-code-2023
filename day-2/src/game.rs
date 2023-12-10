@@ -111,6 +111,10 @@ impl GameAnalysis {
             max_green: green,
         }
     }
+
+    pub fn min_cube(&self) -> u64 {
+        self.max_red * self.max_green * self.max_blue
+    }
 }
 
 #[cfg(test)]
