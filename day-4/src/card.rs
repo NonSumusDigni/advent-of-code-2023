@@ -19,10 +19,9 @@ pub fn try_score_card(input: &str) -> Result<usize, Box<dyn Error>> {
     for pick in picks {
         let pick = pick?;
         if winners.contains(&pick) {
-            if let Some(s) = score {
-                score = Some(s * 2);
-            } else {
-                score = Some(1);
+            score = match score {
+                None => Some(1),
+                Some(s) => Some(s * 2),
             }
         }
     }
