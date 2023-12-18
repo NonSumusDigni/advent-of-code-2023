@@ -8,7 +8,7 @@
   - [X] Part 1
   - [X] Part 2
 - [ ] Day 4
-  - [ ] Part 1
+  - [X] Part 1
   - [ ] Part 2
 - [ ] Day 5
   - [ ] Part 1
