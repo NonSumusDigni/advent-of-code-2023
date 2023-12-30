@@ -11,8 +11,8 @@ use num_traits::{One, Zero};
 
 use crate::card::try_score_card;
 
-// static INPUT_PATH: &str = "files/input.txt";
-static INPUT_PATH: &str = "files/test.txt";
+static INPUT_PATH: &str = "files/input.txt";
+// static INPUT_PATH: &str = "files/test.txt";
 
 fn main() -> Result<(), Box<dyn Error>> {
     let reader = BufReader::new(File::open(INPUT_PATH)?);

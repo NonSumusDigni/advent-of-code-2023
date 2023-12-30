@@ -10,23 +10,15 @@ pub fn try_score_card(input: &str) -> Result<(usize, usize), Box<dyn Error>> {
         .filter(|s| !s.is_empty())
         .map(|n| n.parse::<usize>())
         .collect::<Result<HashSet<usize>, _>>()?;
-    let picks = picks
+    let picks: Vec<usize> = picks
         .split(' ')
         .filter(|s| !s.is_empty())
-        .map(|n| n.parse::<usize>());
+        .map(|n| n.parse::<usize>())
+        .collect::<Result<Vec<usize>, _>>()?;
 
-    let mut score = None::<usize>;
-    for pick in picks {
-        let pick = pick?;
-        if winners.contains(&pick) {
-            score = match score {
-                None => Some(1),
-                Some(s) => Some(s * 2),
-            }
-        }
-    }
+    let score = picks.into_iter().filter(|n| winners.contains(n)).count();
 
-    Ok((id.trim().parse()?, score.unwrap_or_default()))
+    Ok((id.trim().parse()?, score))
 }
 
 #[cfg(test)]
@@ -36,7 +28,8 @@ mod tests {
     #[test]
     fn test_try_score_card() {
         let input = "Card 1: 41 48 83 86 17 | 83 86  6 31 17  9 48 53";
-        let result = try_score_card(input).unwrap();
-        assert_eq!(result, 8);
+        let (id, score) = try_score_card(input).unwrap();
+        assert_eq!(id, 1);
+        assert_eq!(score, 4);
     }
 }
