@@ -1,9 +1,9 @@
 use std::collections::HashSet;
 use std::error::Error;
 
-pub fn try_score_card(input: &str) -> Result<usize, Box<dyn Error>> {
-    let (_label, info) = input.split_once(':').ok_or("Invalid input")?;
-    // let (_, id) = label.split_once(' ').ok_or("Invalid input")?;
+pub fn try_score_card(input: &str) -> Result<(usize, usize), Box<dyn Error>> {
+    let (label, info) = input.split_once(':').ok_or("Invalid input")?;
+    let (_, id) = label.split_once(' ').ok_or("Invalid input")?;
     let (winners, picks) = info.trim().split_once(" | ").ok_or("Invalid input")?;
     let winners = winners
         .split(' ')
@@ -26,7 +26,7 @@ pub fn try_score_card(input: &str) -> Result<usize, Box<dyn Error>> {
         }
     }
 
-    Ok(score.unwrap_or_default())
+    Ok((id.trim().parse()?, score.unwrap_or_default()))
 }
 
 #[cfg(test)]
